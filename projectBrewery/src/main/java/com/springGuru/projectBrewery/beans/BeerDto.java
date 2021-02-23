@@ -1,5 +1,6 @@
 package com.springGuru.projectBrewery.beans;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import com.springGuru.projectBrewery.beans.v2.BeerStyleEnum;
@@ -20,4 +21,6 @@ public class BeerDto {
 	private String beerName;
 	private BeerStyleEnum  beerStyle;
 	private Boolean showInventoryOnHand;
+	private OffsetDateTime createdDate;
+	private OffsetDateTime lastModifiedDate;
 }
