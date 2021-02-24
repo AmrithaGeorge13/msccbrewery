@@ -16,5 +16,14 @@ public class BeerService implements BeerInterface{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public BeerDto updateBeer(UUID beerId, BeerDto beerDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void deleteById(UUID beerId) {
+		// TODO Auto-generated method stub
+	}
 	
 }
