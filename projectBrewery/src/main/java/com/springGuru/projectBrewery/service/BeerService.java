@@ -2,10 +2,12 @@ package com.springGuru.projectBrewery.service;
 
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.springGuru.projectBrewery.beans.BeerDto;
 import com.springGuru.projectBrewery.beans.v2.BeerStyleEnum;
 import com.springGuru.projectBrewery.interfaces.BeerInterface;
-
+@Service
 public class BeerService implements BeerInterface{
 
 	public BeerDto getBeerById(UUID beerId) {

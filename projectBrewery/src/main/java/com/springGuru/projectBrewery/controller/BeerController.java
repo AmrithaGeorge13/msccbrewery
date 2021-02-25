@@ -1,6 +1,7 @@
 package com.springGuru.projectBrewery.controller;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +25,8 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/beer")
-public class BeerControler {
+public class BeerController {
+@Autowired
 private BeerService beerService;
 
 @GetMapping("/{beerId}")
