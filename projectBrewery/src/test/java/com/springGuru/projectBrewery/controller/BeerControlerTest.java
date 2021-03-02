@@ -9,8 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import javax.net.ssl.SSLEngineResult.Status;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -19,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springGuru.projectBrewery.beans.BeerDto;
@@ -47,8 +47,9 @@ class BeerControlerTest {
 	public void saveNewBeer() throws Exception {
 		BeerDto beerDto = BeerDto.builder().build();
 		String beerDtoJson = objectMapper.writeValueAsString(beerDto);
-		given(beerService.saveNewBeer(any())).willReturn(getValidBeerDto());
-		mockmvc.perform(post("/api/v18/beer").contentType(MediaType.APPLICATION_JSON).content(beerDtoJson)
+		//given(beerService.saveNewBeer(any())).willReturn(getValidBeerDto());
+		mockmvc.perform((RequestBuilder) ((ResultActions) post("/api/v18/beer").contentType(MediaType.APPLICATION_JSON)
+				.content(beerDtoJson))
 				.andExpect(status().isCreated()));
 	}
 
