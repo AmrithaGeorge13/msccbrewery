@@ -1,5 +1,6 @@
 package com.springGuru.projectBrewery.config;
 
+import java.net.URI;
 import java.util.UUID;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -27,5 +28,11 @@ public void setApiHost(String apiHost) {
 
 public BeerDto getBeerById(UUID uuid) {
 	return resttemplate.getForObject(apiHost+BEER_PATH+uuid.toString(), BeerDto.class);
+}
+public URI saveBeerDto(BeerDto beerdto) {
+	return resttemplate.postForLocation(apiHost+BEER_PATH, beerdto);
+}
+public void updateBeer(UUID uuid,BeerDto beerdto) {
+	resttemplate.put(apiHost+BEER_PATH+uuid.toString(),beerdto);
 }
 }
