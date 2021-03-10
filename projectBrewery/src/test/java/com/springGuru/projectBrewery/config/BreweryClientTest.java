@@ -1,4 +1,4 @@
-x`package com.springGuru.projectBrewery.config;
+package com.springGuru.projectBrewery.config;
 
 import static org.junit.jupiter.api.Assertions.*;
 
