@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.springGuru.projectBrewery.beans.BeerDto;
+import com.springGuru.projectBrewery.rest.BreweryClient;
 
 class BreweryClientTest {
 	@Autowired
@@ -29,5 +30,9 @@ class BreweryClientTest {
 	void updateBeerTest() {
 		BeerDto beerdto=BeerDto.builder().beerName("Beer New").build();
 		breweryClient.updateBeer(UUID.randomUUID(),beerdto);
+	}
+	@Test
+	void DeleteBeerTest() {
+		breweryClient.deleteBeer(UUID.randomUUID());	
 	}
 }

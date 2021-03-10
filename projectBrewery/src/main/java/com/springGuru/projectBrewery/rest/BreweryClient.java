@@ -1,4 +1,4 @@
-package com.springGuru.projectBrewery.config;
+package com.springGuru.projectBrewery.rest;
 
 import java.net.URI;
 import java.util.UUID;
@@ -34,5 +34,8 @@ public URI saveBeerDto(BeerDto beerdto) {
 }
 public void updateBeer(UUID uuid,BeerDto beerdto) {
 	resttemplate.put(apiHost+BEER_PATH+uuid.toString(),beerdto);
+}
+public void deleteBeer(UUID uuid) {
+	resttemplate.delete(apiHost+BEER_PATH+uuid.toString());
 }
 }
