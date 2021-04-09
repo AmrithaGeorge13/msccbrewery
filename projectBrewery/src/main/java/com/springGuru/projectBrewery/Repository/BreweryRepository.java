@@ -6,6 +6,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.springGuru.projectBrewery.Entity.BreweryEntity;
 
-public interface BreweryInterface extends PagingAndSortingRepository<BreweryEntity, UUID> {
+public interface BreweryRepository extends PagingAndSortingRepository<BreweryEntity, UUID> {
 
 }
