@@ -1,11 +1,16 @@
 package com.springGuru.projectBrewery.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+
+import javax.validation.ConstraintViolationException;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,5 +59,15 @@ public class CustomerController {
 	private void DeleteCutsomer(@PathVariable UUID customerId){
 		customerService.CustomerServiceDelete(customerId);
 		
+	}
+	
+	@ExceptionHandler(ConstraintViolationException.class)
+	private ResponseEntity<List> exceptionHandler(ConstraintViolationException e1){
+		
+		List<String> errors=new ArrayList<>(e1.getConstraintViolations().size());
+		e1.getConstraintViolations().forEach(violations->{
+			errors.add(violations.getPropertyPath()+":"+violations.getMessage());
+		});
+		return new ResponseEntity<>(errors,HttpStatus.ACCEPTED);
 	}
 }
